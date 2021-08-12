@@ -4,6 +4,9 @@ package com.company;
  * This class stores pointers for the head and tail of the linked list. The length is used for searching/insertion/deletion at a specific
  * location.
  *
+ * This is a doubly reversed linked list. It's time complexity is O(N) time. It's actually O(N/2) for insertion and deletion
+ * since it determines whether to iterate normally from the head or iterate backwards to find the position for insertion/deletion
+ * However, the 1/2 constant is ignored
  */
 
 public class LinkedList {
@@ -173,7 +176,7 @@ public class LinkedList {
     }
 
 
-
+    //inserts lInsert between lNodeA and lNodeB
     private void insertBetween(Node lNodeA, Node lNodeB, Node lInsert){
 
         lNodeA.Next = lInsert;
@@ -233,6 +236,77 @@ public class LinkedList {
             System.out.println(Iter + "\n" + RIter);
         }
 
+    }
+
+    public void remove(int lPos){
+
+        if (lPos > mLength-1){
+            System.out.println("Out of bounds");
+        }
+
+        else if (mLength == 0){
+            System.out.println("There are no nodes to remove");
+        }
+
+        else if (mLength == 1){
+            mHead = null;
+            mLength-=1;
+        }
+
+        else if (mLength == 2){
+
+            if (lPos == 0){
+                mHead = mTail;
+                mTail = null;
+                mLength-=1;
+            }
+
+            else {
+                mTail = null;
+                mLength-=1;
+            }
+        }
+
+        else if (mLength >= 3){
+            Node lCurr = mHead;
+            int i = 0;
+
+            if (i == lPos){
+                removeNode(lCurr.Prev, lCurr.Next, lCurr);
+            }
+
+            else{
+                while (i != lPos){
+                    i++;
+                    lCurr = lCurr.Next;
+
+                    if (i == lPos){
+                        removeNode(lCurr.Prev, lCurr.Next, lCurr);
+                    }
+
+
+                }
+            }
+
+            mLength-=1;
+
+        }
+    }
+
+    private void removeNode(Node lNodeA, Node lNodeB, Node lCurr){
+
+        if (lCurr == mHead){
+            mHead = mHead.Next;
+        }
+
+        else if (lCurr == mTail){
+            mTail = mTail.Prev;
+        }
+
+        lNodeA.Next = lCurr.Next;
+        lNodeB.Prev = lCurr.Prev;
+
+        lCurr = null;
 
     }
 }
