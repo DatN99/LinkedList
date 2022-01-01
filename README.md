@@ -10,11 +10,17 @@ However, the 1/2 constant is ignored
 Supported operations: 
 
 add -> initializes ndoe and adds node to end of list
+
 insert -> initializes node and inserts at specific position
+
 insertNewHead -> insert node at head position
+
 insertBetween -> insert node between two nodes
+
 remove -> removes node at specified position
+
 removeNode -> removes specified node between specified surrounding nodes
+
 print-> prints linked list
 
 mergeTwoLists -> merges two lists where new list has sorted nodes in ascending order.
