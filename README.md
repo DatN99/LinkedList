@@ -7,7 +7,8 @@ This is a doubly reversed linked list. It's time complexity is O(N) time. It's a
 since it determines whether to iterate normally from the head or iterate backwards to find the position for insertion/deletion
 However, the 1/2 constant is ignored
 
-Supported operations:
+Supported operations: 
+
 add -> initializes ndoe and adds node to end of list
 insert -> initializes node and inserts at specific position
 insertNewHead -> insert node at head position
